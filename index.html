@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Account List</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="hero">
+            <div class="hero__inner">
+                <h1 class="hero__title" id="pageTitle">envi64 account list</h1>
+                <p class="hero__subtitle" id="pageSubtitle"></p>
+                <div class="hero__meta">
+                    <span class="pill" id="lastUpdated"></span>
+                    <span class="pill pill--contact" id="contact"></span>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <nav class="tabs" id="tabs">
+                <button class="tab tab--active" data-cat="all">
+                    All <span class="tab__count" id="count-all"></span>
+                </button>
+                <button class="tab" data-cat="aged">
+                    aged <span class="tab__count" id="count-aged"></span>
+                </button>
+                <button class="tab" data-cat="6digit">
+                    6 digit <span class="tab__count" id="count-6digit"></span>
+                </button>
+                <button class="tab" data-cat="5digit">
+                    5 digit <span class="tab__count" id="count-5digit"></span>
+                </button>
+                <button class="tab" data-cat="mania">
+                    osu!mania <span class="tab__count" id="count-mania"></span>
+                </button>
+            </nav>
+
+            <div class="toolbar">
+                <input
+                    type="search"
+                    class="search"
+                    id="search"
+                    placeholder="search by lot, country, notes..."
+                />
+                <label class="sort">
+                    <span>sort</span>
+                    <select id="sort">
+                        <option value="lot-asc">lot ↑</option>
+                        <option value="lot-desc">lot ↓</option>
+                        <option value="year-desc">year ↓</option>
+                        <option value="year-asc">year ↑</option>
+                        <option value="pp-desc">pp ↓</option>
+                        <option value="pp-asc">pp ↑</option>
+                    </select>
+                </label>
+            </div>
+
+            <section class="grid" id="grid"></section>
+
+            <p class="empty" id="empty" hidden>
+                no accounts in this category;-;
+            </p>
+        </main>
+
+        <footer class="footer">
+            <p>1k = 1,000 &nbsp;·&nbsp; 1kk = 1,000,000</p>
+        </footer>
+
+        <script src="data.js"></script>
+        <script>
+            const FLAG = {
+                Vietnam: "🇻🇳",
+                Colombia: "🇨🇴",
+                Germany: "🇩🇪",
+                France: "🇫🇷",
+                Martinique: "🇲🇶",
+                Maldives: "🇲🇻",
+                "United States": "🇺🇸",
+                "Russian Federation": "🇷🇺",
+                Australia: "🇦🇺",
+                Malaysia: "🇲🇾",
+                "United Kingdom": "🇬🇧",
+                "Costa Rica": "🇨🇷",
+                Thailand: "🇹🇭",
+                Brazil: "🇧🇷",
+                Canada: "🇨🇦",
+                Ecuador: "🇪🇨",
+                Indonesia: "🇮🇩",
+                Japan: "🇯🇵",
+                Mexico: "🇲🇽",
+                Norway: "🇳🇴",
+            };
+            const flagFor = (c) => (c && FLAG[c] ? FLAG[c] : "🏳️");
+
+            const fmt = (n) => {
+                if (n === "" || n === null || n === undefined) return "—";
+                n = Number(n);
+                if (isNaN(n)) return "—";
+                return n.toLocaleString("en-US");
+            };
+
+            const fmtCompact = (n) => {
+                n = Number(n);
+                if (isNaN(n)) return "—";
+                if (n >= 1e6)
+                    return (n / 1e6).toFixed(n % 1e6 === 0 ? 0 : 1) + "M";
+                if (n >= 1e3)
+                    return (n / 1e3).toFixed(n % 1e3 === 0 ? 0 : 1) + "k";
+                return String(n);
+            };
+
+            const CATEGORY_LABEL = {
+                aged: "Aged",
+                "6digit": "6 digit",
+                "5digit": "5 digit",
+                mania: "osu!mania",
+            };
+            const CATEGORY_ACCENT = {
+                aged: "amber",
+                "6digit": "cyan",
+                "5digit": "violet",
+                mania: "green",
+            };
+
+            document.getElementById("pageTitle").textContent =
+                SETTINGS.title || "Account List";
+            if (SETTINGS.subtitle) {
+                document.getElementById("pageSubtitle").textContent =
+                    SETTINGS.subtitle;
+            }
+            if (SETTINGS.lastUpdated) {
+                const d = new Date(SETTINGS.lastUpdated);
+                const txt = isNaN(d)
+                    ? "updated " + SETTINGS.lastUpdated
+                    : "updated " +
+                      d.toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                      });
+                document.getElementById("lastUpdated").textContent = txt;
+            }
+            if (SETTINGS.contact) {
+                document.getElementById("contact").textContent =
+                    SETTINGS.contact;
+            }
+
+            const countByCat = (cat) =>
+                cat === "all"
+                    ? ACCOUNTS.length
+                    : ACCOUNTS.filter((a) => a.category === cat).length;
+            ["all", "aged", "6digit", "5digit", "mania"].forEach((cat) => {
+                document.getElementById("count-" + cat).textContent =
+                    countByCat(cat);
+            });
+
+            let activeCat = "all";
+            let query = "";
+            let sortKey = "lot-asc";
+
+            function escapeHTML(s) {
+                return String(s)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+            function cardHTML(a) {
+                const accent = CATEGORY_ACCENT[a.category] || "cyan";
+                const label = CATEGORY_LABEL[a.category] || a.category;
+                const flag = flagFor(a.country);
+                const countryTitle = a.country ? escapeHTML(a.country) : "";
+
+                const meBadge = a.me
+                    ? `<span class="tag tag--me">me!</span>`
+                    : "";
+                const supBadge = a.supporter
+                    ? `<span class="tag tag--sup">osu!supporter</span>`
+                    : "";
+
+                const rankHTML = a.rank
+                    ? `<div class="card__rank">${escapeHTML(a.rank)}</div>`
+                    : `<div class="card__rank card__rank--tbd">rank TBD</div>`;
+
+                const ppHTML =
+                    a.pp !== "" && a.pp !== null && a.pp !== undefined
+                        ? `<div class="card__pp">${fmtCompact(a.pp)}<span>pp</span></div>`
+                        : "";
+
+                const pcHTML =
+                    a.playcount === null ||
+                    a.playcount === "" ||
+                    a.playcount === undefined
+                        ? "—"
+                        : fmtCompact(a.playcount);
+
+                return `
+        <article class="card card--${accent}">
+          <div class="card__top">
+            <span class="card__lot">#${a.lot}</span>
+            <span class="card__tags">
+              <span class="card__badge card__badge--${accent}">${label}</span>
+              ${meBadge}${supBadge}
+            </span>
+          </div>
+          <div class="card__main">
+            <div class="card__flag" title="${countryTitle}">${flag}</div>
+            ${rankHTML}
+            ${ppHTML}
+          </div>
+          <dl class="card__stats">
+            <div><dt>Year</dt><dd>${a.year || "—"}</dd></div>
+            <div><dt>Playcount</dt><dd>${pcHTML}</dd></div>
+            <div><dt>Playtime</dt><dd>${fmt(a.playtime)}h</dd></div>
+          </dl>
+          ${a.notes ? `<p class="card__notes">${escapeHTML(a.notes)}</p>` : ""}
+        </article>
+      `;
+            }
+
+            function render() {
+                let list = ACCOUNTS.slice();
+
+                if (activeCat !== "all") {
+                    list = list.filter((a) => a.category === activeCat);
+                }
+                if (query) {
+                    const q = query.toLowerCase();
+                    list = list.filter(
+                        (a) =>
+                            String(a.lot).toLowerCase().includes(q) ||
+                            String(a.country).toLowerCase().includes(q) ||
+                            String(a.notes).toLowerCase().includes(q) ||
+                            String(a.rank).toLowerCase().includes(q) ||
+                            String(a.year).includes(q),
+                    );
+                }
+
+                const [field, dir] = sortKey.split("-");
+                const mult = dir === "desc" ? -1 : 1;
+                list.sort((a, b) => {
+                    let va = a[field],
+                        vb = b[field];
+                    if (field === "lot") {
+                        va = Number(va);
+                        vb = Number(vb);
+                    }
+                    if (va == null) va = -Infinity;
+                    if (vb == null) vb = -Infinity;
+                    if (va < vb) return -1 * mult;
+                    if (va > vb) return 1 * mult;
+                    return 0;
+                });
+
+                const grid = document.getElementById("grid");
+                const empty = document.getElementById("empty");
+
+                if (list.length === 0) {
+                    grid.innerHTML = "";
+                    empty.hidden = false;
+                    return;
+                }
+                empty.hidden = true;
+                grid.innerHTML = list.map(cardHTML).join("");
+            }
+
+            document.getElementById("tabs").addEventListener("click", (e) => {
+                const btn = e.target.closest(".tab");
+                if (!btn) return;
+                document
+                    .querySelectorAll(".tab")
+                    .forEach((t) => t.classList.remove("tab--active"));
+                btn.classList.add("tab--active");
+                activeCat = btn.dataset.cat;
+                render();
+            });
+
+            document.getElementById("search").addEventListener("input", (e) => {
+                query = e.target.value.trim();
+                render();
+            });
+
+            document.getElementById("sort").addEventListener("change", (e) => {
+                sortKey = e.target.value;
+                render();
+            });
+
+            render();
+        </script>
+    </body>
+</html>

@@ -78,7 +78,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 12,
+    lot: 11,
     category: "aged",
     year: 2024,
     country: "Australia",
@@ -93,7 +93,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 14,
+    lot: 13,
     category: "aged",
     year: 2021,
     country: "Germany",
@@ -108,7 +108,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 15,
+    lot: 14,
     category: "aged",
     year: 2024,
     country: "United Kingdom",
@@ -123,7 +123,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 17,
+    lot: 16,
     category: "aged",
     year: 2023,
     country: "Costa Rica",
@@ -138,7 +138,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 18,
+    lot: 17,
     category: "aged",
     year: 2023,
     country: "France",
@@ -153,7 +153,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 27,
+    lot: 25,
     category: "aged",
     year: 2024,
     country: "Mexico",
@@ -168,7 +168,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 28,
+    lot: 26,
     category: "6digit",
     year: 2024,
     country: "Norway",
@@ -187,21 +187,6 @@ const ACCOUNTS = [
   {
     lot: 10,
     category: "6digit",
-    year: 2023,
-    country: "Russian Federation",
-    pp: 2000,
-    playcount: 7000,
-    playtime: 95,
-    rank: "551k",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes: "",
-  },
-
-  {
-    lot: 11,
-    category: "6digit",
     year: 2021,
     country: "Vietnam",
     pp: 1500,
@@ -215,7 +200,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 13,
+    lot: 12,
     category: "6digit",
     year: 2022,
     country: "Australia",
@@ -230,7 +215,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 16,
+    lot: 15,
     category: "6digit",
     year: 2021,
     country: "Malaysia",
@@ -245,7 +230,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 20,
+    lot: 19,
     category: "6digit",
     year: 2022,
     country: "Thailand",
@@ -260,7 +245,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 21,
+    lot: 20,
     category: "6digit",
     year: 2022,
     country: "Brazil",
@@ -275,7 +260,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 24,
+    lot: 22,
     category: "6digit",
     year: 2021,
     country: "United Kingdom",
@@ -290,7 +275,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 29,
+    lot: 27,
     category: "6digit",
     year: 2022,
     country: "Vietnam",
@@ -322,7 +307,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 19,
+    lot: 18,
     category: "5digit",
     year: 2019,
     country: "United States",
@@ -335,24 +320,9 @@ const ACCOUNTS = [
     supporter: false,
     notes: "",
   },
-
+  
   {
-    lot: 22,
-    category: "5digit",
-    year: 2021,
-    country: "Canada",
-    pp: 5000,
-    playcount: 25000,
-    playtime: 300,
-    rank: "99k",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes: "",
-  },
-
-  {
-    lot: 25,
+    lot: 23,
     category: "5digit",
     year: 2022,
     country: "Indonesia",
@@ -367,7 +337,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 26,
+    lot: 24,
     category: "5digit",
     year: 2022,
     country: "Japan",
@@ -399,7 +369,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 23,
+    lot: 21,
     category: "mania",
     year: 2024,
     country: "Ecuador",

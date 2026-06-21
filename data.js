@@ -34,22 +34,6 @@ const ACCOUNTS = [
   {
     lot: 7,
     category: "aged",
-    year: 2018,
-    country: "France",
-    pp: 0,
-    playcount: 0,
-    playtime: 0,
-    rank: "",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes:
-      "stats hidden due to low amount of players in geo (not really france but close)",
-  },
-
-  {
-    lot: 8,
-    category: "aged",
     year: 2023,
     country: "Maldives",
     pp: 10,
@@ -63,7 +47,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 9,
+    lot: 8,
     category: "aged",
     year: 2024,
     country: "United States",
@@ -78,7 +62,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 11,
+    lot: 10,
     category: "aged",
     year: 2024,
     country: "Australia",
@@ -93,7 +77,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 13,
+    lot: 11,
     category: "aged",
     year: 2021,
     country: "Germany",
@@ -108,7 +92,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 14,
+    lot: 12,
     category: "aged",
     year: 2024,
     country: "United Kingdom",
@@ -123,7 +107,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 16,
+    lot: 14,
     category: "aged",
     year: 2023,
     country: "Costa Rica",
@@ -138,7 +122,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 17,
+    lot: 15,
     category: "aged",
     year: 2023,
     country: "France",
@@ -152,40 +136,10 @@ const ACCOUNTS = [
     notes: "",
   },
 
-  {
-    lot: 25,
-    category: "aged",
-    year: 2024,
-    country: "Mexico",
-    pp: 900,
-    playcount: 5000,
-    playtime: 60,
-    rank: "1kk",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes: "",
-  },
-
-  {
-    lot: 26,
-    category: "6digit",
-    year: 2024,
-    country: "Norway",
-    pp: 1500,
-    playcount: 2500,
-    playtime: 0,
-    rank: "800k",
-    mania: true,
-    me: true,
-    supporter: false,
-    notes: "mania 1.5kpp",
-  },
-
   // -------- 6 DIGIT --------
 
   {
-    lot: 10,
+    lot: 9,
     category: "6digit",
     year: 2021,
     country: "Vietnam",
@@ -200,22 +154,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 12,
-    category: "6digit",
-    year: 2022,
-    country: "Australia",
-    pp: 3000,
-    playcount: 15000,
-    playtime: 250,
-    rank: "300k",
-    mania: false,
-    me: true,
-    supporter: false,
-    notes: "for aura farming",
-  },
-
-  {
-    lot: 15,
+    lot: 13,
     category: "6digit",
     year: 2021,
     country: "Malaysia",
@@ -230,7 +169,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 19,
+    lot: 17,
     category: "6digit",
     year: 2022,
     country: "Thailand",
@@ -246,36 +185,6 @@ const ACCOUNTS = [
 
   {
     lot: 20,
-    category: "6digit",
-    year: 2022,
-    country: "Brazil",
-    pp: 1600,
-    playcount: 9000,
-    playtime: 150,
-    rank: "700k",
-    mania: false,
-    me: true,
-    supporter: false,
-    notes: "",
-  },
-
-  {
-    lot: 22,
-    category: "6digit",
-    year: 2021,
-    country: "United Kingdom",
-    pp: 2000,
-    playcount: 5000,
-    playtime: 80,
-    rank: "580k",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes: "",
-  },
-
-  {
-    lot: 27,
     category: "6digit",
     year: 2022,
     country: "Vietnam",
@@ -307,7 +216,7 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 18,
+    lot: 16,
     category: "5digit",
     year: 2019,
     country: "United States",
@@ -322,7 +231,7 @@ const ACCOUNTS = [
   },
   
   {
-    lot: 23,
+    lot: 18,
     category: "5digit",
     year: 2022,
     country: "Indonesia",
@@ -330,21 +239,6 @@ const ACCOUNTS = [
     playcount: 40000,
     playtime: 700,
     rank: "66k",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes: "",
-  },
-
-  {
-    lot: 24,
-    category: "5digit",
-    year: 2022,
-    country: "Japan",
-    pp: 5000,
-    playcount: 30000,
-    playtime: 300,
-    rank: "99k",
     mania: false,
     me: false,
     supporter: false,
@@ -368,20 +262,6 @@ const ACCOUNTS = [
     notes: "",
   },
 
-  {
-    lot: 21,
-    category: "mania",
-    year: 2024,
-    country: "Ecuador",
-    pp: 6000,
-    playcount: 5000,
-    playtime: 100,
-    rank: "30k",
-    mania: true,
-    me: false,
-    supporter: false,
-    notes: "",
-  },
 ];
 
 const SETTINGS = {

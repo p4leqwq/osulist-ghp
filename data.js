@@ -169,21 +169,6 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 17,
-    category: "6digit",
-    year: 2022,
-    country: "Thailand",
-    pp: 3600,
-    playcount: 13000,
-    playtime: 200,
-    rank: "250k",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes: "",
-  },
-
-  {
     lot: 20,
     category: "6digit",
     year: 2022,

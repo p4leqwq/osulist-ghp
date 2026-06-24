@@ -17,21 +17,6 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 5,
-    category: "aged",
-    year: 2024,
-    country: "Germany",
-    pp: 31,
-    playcount: 55,
-    playtime: 1,
-    rank: "2.7kk",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes: "",
-  },
-
-  {
     lot: 7,
     category: "aged",
     year: 2023,
@@ -44,21 +29,6 @@ const ACCOUNTS = [
     me: false,
     supporter: false,
     notes: "stats hidden due to low amount of players in geo",
-  },
-
-  {
-    lot: 8,
-    category: "aged",
-    year: 2024,
-    country: "United States",
-    pp: 0,
-    playcount: null,
-    playtime: 0,
-    rank: "",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes: "",
   },
 
   {
@@ -225,6 +195,21 @@ const ACCOUNTS = [
     playtime: 700,
     rank: "66k",
     mania: false,
+    me: false,
+    supporter: false,
+    notes: "",
+  },
+
+  {
+    lot: 19,
+    category: "mania",
+    year: 2024,
+    country: "Norway",
+    pp: 1500,
+    playcount: 600,
+    playtime: 10,
+    rank: "200k",
+    mania: true,
     me: false,
     supporter: false,
     notes: "",

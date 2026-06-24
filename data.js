@@ -239,5 +239,5 @@ const SETTINGS = {
   subtitle:
     "most of stats are very rounded, also ask for availability before paying",
   lastUpdated: "2026-06-21",
-  contact: "discord @envi64 192387794667175936 / @e3nv2",
+  contact: "discord @envi64 192387794667175936 / tg @e3nv2",
 };

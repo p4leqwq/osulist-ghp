@@ -17,21 +17,6 @@ const ACCOUNTS = [
   },
 
   {
-    lot: 52,
-    category: "aged",
-    year: 2024,
-    country: "France",
-    pp: 250,
-    playcount: 100,
-    playtime: 5,
-    rank: "1.5kk",
-    mania: false,
-    me: false,
-    supporter: false,
-    notes: "",
-  },
-
-  {
     lot: 53,
     category: "aged",
     year: 2021,

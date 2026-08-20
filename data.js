@@ -15,7 +15,9 @@ const ACCOUNTS = [
     supporter: false,
     notes: "",
   },
-
+  
+];
+  
 const SETTINGS = {
   title: "NOT MAINTAINED ANYMORE",
   subtitle:
